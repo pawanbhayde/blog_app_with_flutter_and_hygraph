@@ -1,10 +1,10 @@
 # blog_app_with_flutter_and_hygraph
 
 A new Flutter project.
-
+<div>
 <img src="ReadmeAssets/appsreen.jpg" width='150'/>
 <img src="ReadmeAssets/blogscreen.jpg" width='150'/>
-
+</div>
 ## Getting Started
 
 This project is a starting point for a Flutter application.
