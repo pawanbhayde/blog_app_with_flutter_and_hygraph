@@ -2,7 +2,8 @@
 
 A new Flutter project.
 
-<img src="ReadmeAssets/appss.jpg" width='150'/>
+<img src="ReadmeAssets/appsreen.jpg" width='150'/>
+<img src="ReadmeAssets/blogscreen.jpg" width='150'/>
 
 ## Getting Started
 

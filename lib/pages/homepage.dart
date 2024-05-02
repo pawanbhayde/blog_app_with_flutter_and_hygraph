@@ -1,5 +1,6 @@
-import 'package:blog_app_with_flutter_and_hygraph/blog_row.dart';
+import 'package:blog_app_with_flutter_and_hygraph/blog_raw.dart';
 import 'package:blog_app_with_flutter_and_hygraph/main.dart';
+import 'package:blog_app_with_flutter_and_hygraph/pages/blogscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -26,9 +27,7 @@ class _HomePageState extends State<HomePage> {
         child: Query(
             options: QueryOptions(
                 document: gql(query),
-                variables: const <String, dynamic>{
-                  "variableName": "value"
-                }),
+                variables: const <String, dynamic>{"variableName": "value"}),
             builder: (result, {fetchMore, refetch}) {
               if (result.isLoading) {
                 return const Center(
@@ -44,14 +43,25 @@ class _HomePageState extends State<HomePage> {
               return ListView.builder(
                 itemCount: posts.length,
                 itemBuilder: (context, index) {
-                  final post = posts[index];
-                  final title = post['title'];
-                  final excerpt = post['excerpt'];
-                  final coverImageURL = post!['coverImage']['url'];
-                  return BlogRow(
-                    title: title,
-                    excerpt: excerpt,
-                    coverURL: coverImageURL,
+                  final blog = posts[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BlogScreen(
+                            title: blog['title'],
+                            content: blog['content']['text'],
+                            coverImageUrl: blog['coverImage']['url'],
+                          ),
+                        ),
+                      );
+                    },
+                    child: BlogRow(
+                      title: blog['title'],
+                      excerpt: blog['excerpt'],
+                      coverURL: blog['coverImage']['url'],
+                    ),
                   );
                 },
               );

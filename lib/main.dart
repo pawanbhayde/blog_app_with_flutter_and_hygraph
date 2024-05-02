@@ -1,4 +1,3 @@
-import 'package:blog_app_with_flutter_and_hygraph/blog_row.dart';
 import 'package:blog_app_with_flutter_and_hygraph/pages/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -24,6 +23,9 @@ query Content{
     excerpt
     coverImage {
       url
+    }
+     content {
+      text
     }
   }
 }
